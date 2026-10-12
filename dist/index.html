@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MUSE ARCADE — ブラウザで遊べる4つのカジュアルゲーム</title>
-<meta name="description" content="落ちものパズル、ブロック崩し、縦シューティング、レースの4ゲームを収録したブラウザ専用アーケード。インストール不要。">
+<meta name="description" content="落ちものパズル、ブロック崩し、縦シューティング、レースの4ゲームを収録した音付きブラウザアーケード。インストール不要、ソースコード公開。">
 <meta name="theme-color" content="#0b1020">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
@@ -18,7 +18,7 @@
       <p class="brand-sub">ブラウザで遊べる小さなゲームセンター</p>
     </div>
   </div>
-  <button id="soundToggle" class="btn btn-ghost" type="button" aria-pressed="false">サウンド OFF</button>
+  <button id="soundToggle" class="btn btn-ghost" type="button" aria-pressed="true">サウンド ON</button>
 </header>
 
 <main>
@@ -29,6 +29,15 @@
     </div>
     <div id="gameGrid" class="game-grid"></div>
     <p class="library-note">キーボード: カードは Tab で移動し Enter で開始できます。プレイ中は P / Esc で一時停止します。</p>
+    <details id="demoDetails" class="play-demo">
+      <summary>40秒のプレイ動画を見る（音付き）</summary>
+      <p>4つのゲームを10秒ずつ紹介する自動プレイの動画です。</p>
+      <video id="playDemo" controls playsinline preload="none" aria-label="4ゲームの音付きプレイ動画、40秒">
+        <source src="media/muse-arcade-4games-40s.mp4" type="video/mp4">
+        <a href="media/muse-arcade-4games-40s.mp4">プレイ動画をダウンロード</a>
+      </video>
+      <p><a href="media/muse-arcade-4games-40s.mp4" download>MP4をダウンロード</a></p>
+    </details>
   </section>
 
   <section id="gameView" hidden aria-label="ゲームプレイ">
@@ -65,7 +74,8 @@
 </main>
 
 <footer class="footer">
-  <p>MUSE ARCADE · Made with Muse Wonder Full / max</p>
+  <p>Studio Yebisu · MuseCode / MuseWonder Full（max）</p>
+  <p><a href="https://github.com/studio-yebisu/musewonder-arcade">GitHubでコードを見る</a></p>
 </footer>
 
 <script type="module" src="main.js"></script>

@@ -62,6 +62,14 @@ main { max-width: 1080px; margin: 0 auto; padding: 8px 16px 20px; }
 .best-score { font-size: 13px; color: var(--text); }
 .best-score small { display: block; color: var(--muted); font-size: 11px; }
 .library-note { color: var(--muted); font-size: 13px; margin-top: 14px; }
+.play-demo {
+  margin-top: 20px; padding: 12px 16px; background: var(--panel);
+  border: 1px solid var(--line); border-radius: var(--radius);
+}
+.play-demo summary { cursor: pointer; font-weight: 700; }
+.play-demo p { color: var(--muted); font-size: 14px; }
+.play-demo video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 8px; background: #050816; }
+.play-demo a, .footer a { color: var(--cyan); }
 .btn {
   font: inherit; font-weight: 700; cursor: pointer; border-radius: 10px;
   border: 1px solid var(--line); background: var(--panel-2); color: var(--text);

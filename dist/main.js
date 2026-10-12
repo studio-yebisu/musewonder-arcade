@@ -323,6 +323,7 @@ function updateCanvasLabel() {
 }
 
 function enterGame(meta) {
+  $("#playDemo").pause();
   stopLoop();
   clearGameInput();
   currentMeta = meta;
@@ -547,6 +548,10 @@ soundToggle.addEventListener("click", () => {
   announce(audio.enabled ? "サウンドをオンにしました。" : "サウンドをオフにしました。");
 });
 syncSoundButton();
+
+$("#demoDetails").addEventListener("toggle", (event) => {
+  if (!event.currentTarget.open) $("#playDemo").pause();
+});
 
 // リサイズ時に DPR を再適用する
 let resizeTimer = null;

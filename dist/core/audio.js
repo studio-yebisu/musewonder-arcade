@@ -1,4 +1,4 @@
-// WebAudio によるシンセ効果音。初期状態はミュート、ユーザー操作で有効化する。
+// WebAudio によるシンセ効果音。音声コンテキストは最初のユーザー操作で作る。
 export function createAudio() {
   let ctx = null;
   let enabled = false;
@@ -54,7 +54,6 @@ export function createAudio() {
     get enabled() { return enabled; },
     setEnabled(v) {
       enabled = Boolean(v);
-      if (enabled) ensureContext();
     },
     unlock() { if (enabled) ensureContext(); },
     play(name) {

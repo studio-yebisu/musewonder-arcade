@@ -54,9 +54,10 @@ export function saveBestScores(best) {
 
 export function loadSoundEnabled() {
   try {
-    return getStore().getItem(SOUND_KEY) === "on";
+    // 初回は音付き。明示的に保存されたミュート設定は尊重する。
+    return getStore().getItem(SOUND_KEY) !== "off";
   } catch {
-    return false;
+    return true;
   }
 }
 
