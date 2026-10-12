@@ -1,0 +1,159 @@
+/* MUSE ARCADE — ダークネイビー基調のレトロアーケード */
+:root {
+  --bg: #0b1020;
+  --panel: #121a33;
+  --panel-2: #182344;
+  --line: #2c3a68;
+  --text: #edf4e4;
+  --muted: #9fb4e8;
+  --lime: #bef264;
+  --cyan: #22d3ee;
+  --amber: #fbbf24;
+  --pink: #f472b6;
+  --radius: 14px;
+}
+* { box-sizing: border-box; }
+html { background: var(--bg); }
+body {
+  margin: 0;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.016) 0 1px, transparent 1px 4px),
+    var(--bg);
+  color: var(--text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Noto Sans JP", system-ui, sans-serif;
+  line-height: 1.55;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.topbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  max-width: 1080px; margin: 0 auto; padding: 14px 16px 6px;
+}
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.brand-mark {
+  display: grid; place-items: center; flex: none;
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--panel-2); border: 2px solid var(--lime);
+  color: var(--lime); font-weight: 900; font-size: 24px;
+  box-shadow: 0 3px 0 #365314;
+}
+.brand-name { margin: 0; font-weight: 900; letter-spacing: 0.14em; font-size: 19px; }
+.brand-sub { margin: 0; color: var(--muted); font-size: 12px; }
+main { max-width: 1080px; margin: 0 auto; padding: 8px 16px 20px; }
+.library-head h1 { margin: 10px 0 4px; font-size: 26px; }
+.library-head p { margin: 0 0 14px; color: var(--muted); max-width: 62ch; }
+.game-grid {
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.game-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.game-card canvas { display: block; width: 100%; height: auto; background: #050816; }
+.card-body { padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.card-kicker { margin: 0; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; }
+.card-title { margin: 0; font-size: 20px; }
+.card-desc { margin: 0; color: var(--muted); font-size: 14px; flex: 1; }
+.card-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 6px; }
+.best-score { font-size: 13px; color: var(--text); }
+.best-score small { display: block; color: var(--muted); font-size: 11px; }
+.library-note { color: var(--muted); font-size: 13px; margin-top: 14px; }
+.btn {
+  font: inherit; font-weight: 700; cursor: pointer; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--panel-2); color: var(--text);
+  padding: 9px 16px; min-height: 44px;
+}
+.btn:hover { border-color: var(--cyan); }
+.btn:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--cyan); outline-offset: 2px;
+}
+.btn-primary { background: var(--lime); border-color: var(--lime); color: #1a2e05; box-shadow: 0 3px 0 #365314; }
+.btn-primary:hover { background: #d9f99d; }
+.btn-ghost { background: transparent; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.48; cursor: default; transform: none; }
+.game-toolbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.game-toolbar h2 { margin: 0; font-size: 20px; }
+.toolbar-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.hud-bar { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+.hud-chip {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+  padding: 5px 14px; font-size: 14px;
+}
+.hud-chip small { color: var(--muted); margin-right: 6px; }
+.hud-chip strong { font-variant-numeric: tabular-nums; }
+.stage-wrap {
+  position: relative; margin: 0 auto;
+  width: min(100%, 520px);
+}
+#gameCanvas {
+  display: block; width: 100%; height: auto; margin: 0 auto;
+  background: #050816; border: 2px solid var(--line); border-radius: var(--radius);
+  touch-action: none;
+}
+#gameCanvas:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.overlay {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  background: rgba(5, 8, 20, 0.78); border-radius: var(--radius); padding: 10px; overflow: auto;
+}
+.overlay[hidden] { display: none; }
+.overlay-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px 14px; text-align: center; max-width: 340px; width: 100%;
+}
+.overlay-card h3 { margin: 0 0 6px; font-size: 24px; }
+.overlay-card p { margin: 0 0 10px; color: var(--muted); }
+.overlay-score { color: var(--lime) !important; font-weight: 800; font-size: 18px; }
+.overlay-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.touch-controls {
+  display: grid; gap: 6px; grid-template-columns: repeat(var(--touch-count, 4), minmax(0, 1fr));
+  margin: 12px auto 0; max-width: 560px;
+}
+.touch-controls .btn {
+  min-width: 0; min-height: 48px; font-size: 14px; padding: 6px 4px;
+  touch-action: manipulation; user-select: none; -webkit-user-select: none;
+}
+.touch-controls .btn.is-down { background: var(--cyan); color: #082f49; border-color: var(--cyan); }
+.howto {
+  max-width: 640px; margin: 14px auto 0; background: var(--panel);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 10px 16px;
+}
+.howto summary { cursor: pointer; font-weight: 700; }
+.howto p { color: var(--muted); white-space: pre-line; }
+.footer { max-width: 1080px; margin: 0 auto; padding: 6px 16px 22px; color: var(--muted); font-size: 12px; }
+@media (max-width: 900px) {
+  .game-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .game-grid { grid-template-columns: minmax(0, 1fr); }
+  .brand-sub { display: none; }
+  .brand { gap: 8px; }
+  .brand-mark { width: 36px; height: 36px; font-size: 21px; }
+  .brand-name { font-size: 15px; letter-spacing: 0.08em; white-space: nowrap; }
+  #soundToggle { font-size: 12px; min-height: 38px; padding: 6px 10px; white-space: nowrap; }
+  .game-toolbar { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
+  .game-toolbar h2 { font-size: 15px; grid-row: 2; grid-column: 1 / -1; }
+  .toolbar-actions { grid-row: 1; grid-column: 2; gap: 5px; flex-wrap: nowrap; }
+  .game-toolbar .btn { font-size: 12px; min-height: 38px; padding: 6px 9px; }
+  #backBtn { justify-self: start; grid-row: 1; grid-column: 1; }
+  .hud-bar { gap: 5px; margin: 8px 0; }
+  .hud-chip { font-size: 12px; padding: 4px 8px; }
+  .hud-chip small { margin-right: 4px; }
+  .touch-controls { grid-template-columns: repeat(var(--touch-mobile-columns, 4), minmax(0, 1fr)); }
+  .touch-controls .btn { font-size: 12px; }
+  .overlay-card { padding: 12px 10px; font-size: 13px; }
+  .overlay-card h3 { font-size: 19px; }
+  .overlay-card p { line-height: 1.4; }
+  .overlay-actions { gap: 6px; }
+  .overlay-actions .btn { font-size: 12px; min-height: 40px; padding: 6px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  body { background: var(--bg); }
+}

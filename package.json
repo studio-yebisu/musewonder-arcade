@@ -1,0 +1,12 @@
+{
+  "name": "musewonder-arcade",
+  "version": "1.0.0",
+  "description": "MUSE ARCADE — ブラウザ専用の4ゲーム入りカジュアルアーケード",
+  "type": "module",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "check": "node --check dist/main.js && node --check dist/core/storage.js && node --check dist/core/audio.js && node --check dist/core/input.js && node --check dist/core/runtime.js && node --check dist/games/block-stack.js && node --check dist/games/prism-break.js && node --check dist/games/star-drift.js && node --check dist/games/midnight-run.js",
+    "test": "node --test tests/mechanics.test.mjs"
+  }
+}

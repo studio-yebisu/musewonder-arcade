@@ -1,0 +1,8 @@
+node_modules/
+.muse/
+.agents/
+.openai/
+*.log
+*.jsonl
+.DS_Store
+Thumbs.db

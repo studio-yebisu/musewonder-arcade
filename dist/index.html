@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MUSE ARCADE — ブラウザで遊べる4つのカジュアルゲーム</title>
+<meta name="description" content="落ちものパズル、ブロック崩し、縦シューティング、レースの4ゲームを収録したブラウザ専用アーケード。インストール不要。">
+<meta name="theme-color" content="#0b1020">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true">M</span>
+    <div>
+      <p class="brand-name">MUSE ARCADE</p>
+      <p class="brand-sub">ブラウザで遊べる小さなゲームセンター</p>
+    </div>
+  </div>
+  <button id="soundToggle" class="btn btn-ghost" type="button" aria-pressed="false">サウンド OFF</button>
+</header>
+
+<main>
+  <section id="libraryView" aria-label="ゲーム一覧">
+    <div class="library-head">
+      <h1>ゲームを選ぶ</h1>
+      <p>気になるゲームを選んで、さっそくプレイ。ベストスコアはこの端末に保存されます。</p>
+    </div>
+    <div id="gameGrid" class="game-grid"></div>
+    <p class="library-note">キーボード: カードは Tab で移動し Enter で開始できます。プレイ中は P / Esc で一時停止します。</p>
+  </section>
+
+  <section id="gameView" hidden aria-label="ゲームプレイ">
+    <div class="game-toolbar">
+      <button id="backBtn" class="btn btn-ghost" type="button">← 一覧に戻る</button>
+      <h2 id="gameTitle">ゲーム</h2>
+      <div class="toolbar-actions">
+        <button id="pauseBtn" class="btn btn-ghost" type="button">一時停止</button>
+        <button id="restartBtn" class="btn btn-ghost" type="button">最初から</button>
+      </div>
+    </div>
+    <div id="hudBar" class="hud-bar" aria-label="ゲーム情報"></div>
+    <div class="stage-wrap">
+      <canvas id="gameCanvas" role="img" tabindex="0" aria-label="ゲーム画面"></canvas>
+      <div id="overlay" class="overlay" hidden>
+        <div class="overlay-card">
+          <h3 id="overlayTitle">準備OK</h3>
+          <p id="overlayText"></p>
+          <p id="overlayScore" class="overlay-score" hidden></p>
+          <div class="overlay-actions">
+            <button id="primaryBtn" class="btn btn-primary" type="button">スタート</button>
+            <button id="overlayBackBtn" class="btn btn-ghost" type="button">一覧に戻る</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p id="srStatus" class="sr-only" aria-live="polite"></p>
+    <div id="touchControls" class="touch-controls" aria-label="タッチ操作"></div>
+    <details class="howto" open>
+      <summary>遊び方・操作</summary>
+      <p id="howtoText"></p>
+    </details>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>MUSE ARCADE · Made with Muse Wonder Full / max</p>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
